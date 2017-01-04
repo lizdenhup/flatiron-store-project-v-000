@@ -20,17 +20,17 @@ ActiveRecord::Schema.define(version: 20170103231836) do
   add_index "carts", ["user_id"], name: "index_carts_on_user_id"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
   end
 
   create_table "items", force: :cascade do |t|
-    t.string  "name"
+    t.string  "title"
     t.integer "inventory"
     t.float   "price"
-    t.integer "categories_id"
+    t.integer "category_id"
   end
 
-  add_index "items", ["categories_id"], name: "index_items_on_categories_id"
+  add_index "items", ["category_id"], name: "index_items_on_category_id"
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 1

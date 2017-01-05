@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :current_cart
   has_many :carts
   
   # Include default devise modules. Others available are:

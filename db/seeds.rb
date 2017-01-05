@@ -13,3 +13,9 @@ Item.all.each do |item|
   item.save
   counter += 1
 end
+
+User.new.tap do |user|
+  user.email = "liz@email.com"
+  user.password = "12345678"
+  user.save 
+end 

@@ -1,6 +1,7 @@
 class Cart < ActiveRecord::Base
   has_many :items, through: :line_items 
   has_many :line_items
+  belongs_to :user
 
   def total
     total = 0
@@ -16,8 +17,9 @@ class Cart < ActiveRecord::Base
       line_item.update(quantity: line_item.quantity + 1)
       return line_item
     else
-      LineItem.new(cart_id: self.id, item_id: item_id, quantity: 1)
+     line_item = LineItem.new(cart_id: self.id, item_id: item_id, quantity: 1)
     end 
+    line_item
   end 
 
 end

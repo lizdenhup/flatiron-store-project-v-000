@@ -1,0 +1,10 @@
+<% if !!current_user %>
+<% @cart.line_items.each do |line_item| %>
+  <p><%= link_to line_item.item.title, item_path(line_item.item) %> | <%= line_item.item.price.to_f/100 %> | Quantity: <%= line_item.quantity %></p>
+<% end %>
+
+<p>Order total: <strong><%= @cart.total.to_f/100 %></strong> </p>
+
+<%= button_to 'Checkout', checkout_path(@cart) %>
+
+<% end %>
